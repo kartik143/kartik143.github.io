@@ -3,59 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kartik's Terraform Resume</title>
+    <title>Kartik's Terraform Resume in VS Code Style</title>
     <style>
         body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f4f4f4;
+            font-family: 'Consolas', 'Monaco', monospace;
+            background-color: #1e1e1e;
             margin: 0;
-            padding: 20px;
-            color: #333; /* Adjust the font color as needed */
+            height: 100vh;
+            color: #d4d4d4;
         }
-        pre {
+        #editor {
             position: relative;
-            background-color: #fff;
-            border: 1px solid #ddd;
+            background-color: #1e1e1e;
+            border: none;
             padding: 20px;
+            height: calc(100% - 40px);
+            box-sizing: border-box;
+            white-space: pre-wrap;
             overflow: auto;
-            font-size: 16px; /* Adjust the font size as needed */
+            tab-size: 4;
         }
-        button {
+        #copyButton {
             position: absolute;
             right: 20px;
             top: 20px;
-            padding: 5px 10px;
+            padding: 8px 16px;
             cursor: pointer;
-            background-color: #ddd; /* Button background color */
-            border: none; /* Removes the default border */
-            border-radius: 5px; /* Rounded corners for the button */
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <h1>Kartik's Terraform Resume</h1>
-    <pre id="terraformContent">
-        <button onclick="copyCode()">Copy code</button>
-        Loading...
-    </pre>
+    <div id="editor">
+        <button id="copyButton">Copy Code</button>
+        <!-- The Terraform code will be inserted here -->
+        <code id="terraformCode">
+            # The content of your Terraform file will go here
+        </code>
+    </div>
+
     <script>
-        function copyCode() {
-            var content = document.getElementById('terraformContent').innerText;
-            navigator.clipboard.writeText(content).then(function() {
-                console.log('Copying to clipboard was successful!');
-            }, function(err) {
-                console.error('Could not copy text: ', err);
+        function copyToClipboard(elementId) {
+            var code = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(code).then(function() {
+                /* clipboard successfully set */
+                alert('Terraform code copied to clipboard!');
+            }, function() {
+                /* clipboard write failed */
+                alert('Failed to copy Terraform code.');
             });
         }
 
-        fetch('whoami.tf')
-            .then(response => response.text())
-            .then(text => {
-                document.getElementById('terraformContent').textContent = text;
-            })
-            .catch(error => {
-                document.getElementById('terraformContent').textContent = 'Failed to load the Terraform file.';
-            });
+        // Add event listener to the copy button
+        document.getElementById('copyButton').addEventListener('click', function() {
+            copyToClipboard('terraformCode');
+        });
+
+        // Fetch and display the Terraform content
+        window.addEventListener('DOMContentLoaded', (event) => {
+            fetch('whoami.tf')
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('terraformCode').textContent = text;
+                })
+                .catch(error => {
+                    document.getElementById('terraformCode').textContent = 'Failed to load the Terraform file.';
+                });
+        });
     </script>
 </body>
 </html>
