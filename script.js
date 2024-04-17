@@ -1,23 +1,22 @@
-function copyToClipboard(elementId) {
-    var code = document.getElementById(elementId).innerText;
+// JavaScript to handle copy to clipboard and other interactive elements
+
+function copyToClipboard() {
+    var code = document.getElementById('editor').innerText;
     navigator.clipboard.writeText(code).then(function() {
-        alert('Terraform code copied to clipboard!');
+        // Display a message or update the button text to show the code was copied
     }, function(err) {
-        alert('Failed to copy Terraform code.');
+        // Handle errors if the copy failed
     });
 }
 
-document.getElementById('copyButton').addEventListener('click', function() {
-    copyToClipboard('editor');
-});
-
+// Fetch and display the Terraform content from whoami.tf
 window.addEventListener('DOMContentLoaded', (event) => {
     fetch('whoami.tf')
         .then(response => response.text())
         .then(text => {
-            document.getElementById('editor').textContent = text;
+            document.querySelector('.editor code').textContent = text;
         })
         .catch(error => {
-            document.getElementById('editor').textContent = 'Failed to load the Terraform file.';
+            document.querySelector('.editor code').textContent = 'Failed to load the Terraform file.';
         });
 });
