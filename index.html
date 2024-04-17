@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Site</title>
+    <title>Kartik's Terraform Resume</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        pre {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, welcome to my GitHub Pages site!</h1>
-    <p>This is a simple HTML page hosted on GitHub Pages.</p>
+    <h1>Kartik's Terraform Resume</h1>
+    <pre id="terraformContent">Loading...</pre>
+    <script>
+        fetch('whoami.tf')
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('terraformContent').textContent = text;
+            })
+            .catch(error => {
+                document.getElementById('terraformContent').textContent = 'Failed to load the Terraform file.';
+            });
+    </script>
 </body>
 </html>
