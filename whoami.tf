@@ -1,20 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.27"
-    }
-    local = {
-      source  = "hashicorp/local"
-      version = "~> 2.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "aws_iam_user" "kartik_kocher" {
   name = "Kartik Kocher"
   tags = {
