@@ -8,20 +8,46 @@
         body {
             font-family: 'Courier New', Courier, monospace;
             background-color: #f4f4f4;
+            margin: 0;
             padding: 20px;
+            color: #333; /* Adjust the font color as needed */
         }
         pre {
+            position: relative;
             background-color: #fff;
             border: 1px solid #ddd;
             padding: 20px;
             overflow: auto;
+            font-size: 16px; /* Adjust the font size as needed */
+        }
+        button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #ddd; /* Button background color */
+            border: none; /* Removes the default border */
+            border-radius: 5px; /* Rounded corners for the button */
         }
     </style>
 </head>
 <body>
     <h1>Kartik's Terraform Resume</h1>
-    <pre id="terraformContent">Loading...</pre>
+    <pre id="terraformContent">
+        <button onclick="copyCode()">Copy code</button>
+        Loading...
+    </pre>
     <script>
+        function copyCode() {
+            var content = document.getElementById('terraformContent').innerText;
+            navigator.clipboard.writeText(content).then(function() {
+                console.log('Copying to clipboard was successful!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
         fetch('whoami.tf')
             .then(response => response.text())
             .then(text => {
