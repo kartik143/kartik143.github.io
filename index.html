@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Kartik's Resume as Code</title>
+    <title>VS Code Style Code Display</title>
 </head>
 <body>
-    <div class="vscode">
-        <div class="sidebar">
-            <!-- Sidebar content like file explorer goes here -->
-        </div>
-        <div class="main">
-            <div class="editor-toolbar">
-                <!-- Editor toolbar content like tabs and buttons goes here -->
+    <div id="vscode-wrapper">
+        <nav id="sidebar">
+            <div class="file-explorer">
+                <span class="directory">TERRAFORM-AWS-PROJECT</span>
+                <!-- Populate with actual file structure -->
             </div>
-            <pre id="editor" class="editor">
-                <code>
-                    <!-- Terraform code goes here -->
+        </nav>
+        <main id="main-content">
+            <header id="editor-header">
+                <!-- Editor tabs and actions -->
+            </header>
+            <section id="editor">
+                <code id="terraform-code">
+                    <!-- Terraform content goes here -->
                 </code>
-            </pre>
-        </div>
+            </section>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
