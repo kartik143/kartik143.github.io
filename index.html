@@ -3,77 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Kartik's Terraform Resume in VS Code Style</title>
-    <style>
-        body {
-            font-family: 'Consolas', 'Monaco', monospace;
-            background-color: #1e1e1e;
-            margin: 0;
-            height: 100vh;
-            color: #d4d4d4;
-        }
-        #editor {
-            position: relative;
-            background-color: #1e1e1e;
-            border: none;
-            padding: 20px;
-            height: calc(100% - 40px);
-            box-sizing: border-box;
-            white-space: pre-wrap;
-            overflow: auto;
-            tab-size: 4;
-        }
-        #copyButton {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            padding: 8px 16px;
-            cursor: pointer;
-            background-color: #007acc;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            font-size: 14px;
-        }
-    </style>
 </head>
 <body>
-    <div id="editor">
-        <button id="copyButton">Copy Code</button>
-        <!-- The Terraform code will be inserted here -->
-        <code id="terraformCode">
-            # The content of your Terraform file will go here
-        </code>
+    <div class="vscode-container">
+        <div class="toolbar">
+            <button id="copyButton" class="copy-button">Copy Code</button>
+        </div>
+        <pre id="editor" class="editor"></pre>
     </div>
-
-    <script>
-        function copyToClipboard(elementId) {
-            var code = document.getElementById(elementId).innerText;
-            navigator.clipboard.writeText(code).then(function() {
-                /* clipboard successfully set */
-                alert('Terraform code copied to clipboard!');
-            }, function() {
-                /* clipboard write failed */
-                alert('Failed to copy Terraform code.');
-            });
-        }
-
-        // Add event listener to the copy button
-        document.getElementById('copyButton').addEventListener('click', function() {
-            copyToClipboard('terraformCode');
-        });
-
-        // Fetch and display the Terraform content
-        window.addEventListener('DOMContentLoaded', (event) => {
-            fetch('whoami.tf')
-                .then(response => response.text())
-                .then(text => {
-                    document.getElementById('terraformCode').textContent = text;
-                })
-                .catch(error => {
-                    document.getElementById('terraformCode').textContent = 'Failed to load the Terraform file.';
-                });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
