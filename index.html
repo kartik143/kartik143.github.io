@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Kartik's Terraform Resume in VS Code Style</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Kartik's Resume as Code</title>
 </head>
 <body>
-    <div class="vscode-container">
-        <div class="toolbar">
-            <button id="copyButton" class="copy-button">Copy Code</button>
+    <div class="vscode">
+        <div class="sidebar">
+            <!-- Sidebar content like file explorer goes here -->
         </div>
-        <pre id="editor" class="editor"></pre>
+        <div class="main">
+            <div class="editor-toolbar">
+                <!-- Editor toolbar content like tabs and buttons goes here -->
+            </div>
+            <pre id="editor" class="editor">
+                <code>
+                    <!-- Terraform code goes here -->
+                </code>
+            </pre>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
