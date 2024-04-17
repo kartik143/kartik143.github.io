@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Kartik's Resume as Code</title>
-    <link href="path/to/prism.css" rel="stylesheet" />
+    <!-- Include the Prism CSS from CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="vscode">
@@ -16,14 +17,14 @@
             <div class="editor-toolbar">
                 <!-- Editor toolbar content like tabs and buttons goes here -->
             </div>
-            <pre id="editor" class="editor">
-                <code>
-                    <!-- Terraform code goes here -->
-                </code>
-            </pre>
+            <pre id="editor" class="editor"><code id="terraform-code" class="language-terraform">
+                <!-- Terraform code goes here -->
+            </code></pre>
         </div>
     </div>
-    <script src="prism.js"></script>
+    <!-- Include the Prism JS from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+    <!-- If you have additional Prism plugins or languages, include them here -->
     <script src="script.js"></script>
 </body>
 </html>
