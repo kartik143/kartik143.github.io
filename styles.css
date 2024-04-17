@@ -1,48 +1,41 @@
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body, html {
     height: 100%;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    background-color: #1e1e1e;
-    color: #d4d4d4;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-#vscode-wrapper {
+.vscode {
     display: flex;
     height: 100%;
 }
 
-#sidebar {
-    width: 200px; /* Adjust width as needed */
-    background-color: #252526; /* Sidebar background */
-    color: #d4d4d4; /* Sidebar text color */
-    /* More sidebar styling */
+.sidebar {
+    width: 200px;
+    background-color: #333;
+    /* Style your sidebar similar to VS Code's file explorer */
 }
 
-.file-explorer .directory {
-    padding: 10px;
-    font-size: 0.9em;
-}
-
-#main-content {
+.main {
     flex-grow: 1;
+    background-color: #1e1e1e;
 }
 
-#editor-header {
-    background-color: #333333; /* Editor header background */
-    padding: 5px; /* Editor header padding */
-    /* More header styling */
+.editor-toolbar {
+    background-color: #252526;
+    /* Style your toolbar similar to VS Code's tab and buttons */
 }
 
-#editor {
-    padding: 20px; /* Editor padding */
-    overflow-y: auto;
-    height: calc(100% - 30px); /* Adjust based on header height */
+.editor {
+    color: #d4d4d4;
+    background-color: #1e1e1e;
+    margin: 0;
+    padding: 20px;
+    overflow: auto;
+    white-space: pre-wrap;
+    font-family: 'Consolas', 'Monaco', monospace;
+    height: calc(100% - 30px); /* Adjust the height based on your toolbar height */
+    tab-size: 4;
 }
 
-/* Add additional styling for code syntax highlighting, line numbers, etc. */
+/* Further style details should be added based on the image. */
